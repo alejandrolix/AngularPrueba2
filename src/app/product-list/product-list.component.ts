@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IProduct } from '../interfaces/iproduct';
 
 @Component({
   selector: 'app-product-list',
@@ -8,10 +9,35 @@ import { Component, OnInit } from '@angular/core';
 export class ProductListComponent implements OnInit {
   title = 'Mi lista de productos';
   headers = {
+    image: 'Imagen',
     desc: 'Producto',
     price: 'Precio',
     avail: 'Disponible'
   };
+  products: IProduct[] = [
+    {
+      id: 1,
+      desc: 'SSD hard drive',
+      avail: new Date('2016-10-03'),
+      price: 75,
+      imageUrl: 'assets/ssd.jpg',
+      rating: 5
+    },
+    {
+      id: 2,
+      desc: 'LGA 1151 Motherboard',
+      avail: new Date('2016-09-15'),
+      price: 96.95,
+      imageUrl: 'assets/motherboard.jpg',
+      rating: 4
+    }
+  ];
+  filterSearch: string = '';
+  showImage: boolean = true;
+
+  toggleImage() {
+    this.showImage = !this.showImage;
+  }
 
   constructor() { }
 
